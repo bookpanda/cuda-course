@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  cuda-dev:
+    image: nvidia/cuda:13.0.0-devel-ubuntu24.04
+    platform: linux/amd64
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]

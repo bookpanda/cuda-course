@@ -186,6 +186,7 @@ As we mine further into detail, I encourage you to research and play around with
     - Deep speed
 - OpenAI
 - VastAI
+    - cheap GPUs for rent
     - link picture of UI here
 - Lambda Labs
     - Cheap datacenter GPUs
