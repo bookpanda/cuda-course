@@ -43,6 +43,7 @@ __global__ void vector_add_gpu_3d(float *a, float *b, float *c, int nx, int ny, 
         }
     }
     // you get the point...
+    // only use 3D when necessary (waste compute)
 }
 
 // Initialize vector with random values
