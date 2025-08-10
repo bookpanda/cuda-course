@@ -9,7 +9,7 @@ int main() {
 
     for (int i = 0; i < 5; i++) {
         printf("%d\t", *ptr);
-        printf("%p\t", ptr);
+        printf("%p\n", ptr);
         ptr++;
     }
     // Output: 

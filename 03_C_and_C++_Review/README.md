@@ -8,3 +8,8 @@
 **06** - Makefiles
 **07** - Debuggers
 **optional** - Extra stuff not covered in video course
+
+```bash
+gcc 01.c -o 01.out
+./01.out
+```

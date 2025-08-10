@@ -2,3 +2,4 @@
 main
 .DS_Store
 notes.md
+*.out

@@ -25,7 +25,7 @@ int main() {
         return 1;
     }
 
-    printf("4. After allocation, ptr value: %p\n", (void*)ptr);
+    printf("4. After allocation, ptr value: %p, reference to value: %d\n", (void*)ptr, *ptr);
 
     // Safe to use ptr after NULL check
     *ptr = 42;
