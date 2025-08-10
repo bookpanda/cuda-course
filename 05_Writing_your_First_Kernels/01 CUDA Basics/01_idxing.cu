@@ -17,6 +17,8 @@ __global__ void whoami(void) {
 
     int id = block_offset + thread_offset; // global person id in the entire apartment complex
 
+    // will print sorted sequences of 32 IDs (the hardware executes a warp (32 threads) in lockstep)
+    // 1 warp = (4, 4, 2) of block so it's either (X, X, 0 to 1) or (X, X, 2 to 3)
     printf("%04d | Block(%d %d %d) = %3d | Thread(%d %d %d) = %3d\n",
         id,
         blockIdx.x, blockIdx.y, blockIdx.z, block_id,
@@ -27,7 +29,7 @@ __global__ void whoami(void) {
 int main(int argc, char **argv) {
     const int b_x = 2, b_y = 3, b_z = 4;
     const int t_x = 4, t_y = 4, t_z = 4; // the max warp size is 32, so 
-    // we will get 2 warp of 32 threads per block
+    // we will get 2 warp of 32 threads per block (1 block = 2 warps)
 
     int blocks_per_grid = b_x * b_y * b_z;
     int threads_per_block = t_x * t_y * t_z;
