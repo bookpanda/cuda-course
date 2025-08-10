@@ -6,8 +6,5 @@ services:
     platform: linux/amd64
     stdin_open: true
     tty: true
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [gpu]
+    volumes:
+      - .:/workspace
