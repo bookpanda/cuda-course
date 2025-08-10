@@ -16,4 +16,8 @@ nvcc main.cu -o main
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/github
 ssh -T git@github.com
+
+# download extensions, clangd
+sudo apt update
+sudo apt install clangd
 ```
