@@ -10,4 +10,10 @@ ssh -i ~/.ssh/vast_ai -p 54480 root@<your_vast_ip> -L 8080:localhost:8080
 scp -i ~/.ssh/vast_ai -P 54480 ./main.cu root@<your_vast_ip>:/workspace/main.cu
 nvcc main.cu -o main
 ./main
+
+# VSCode in GPU instance
+# create a new ssh key for github, add in github settings
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/github
+ssh -T git@github.com
 ```
