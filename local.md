@@ -20,5 +20,5 @@ ssh -T git@github.com
 # download extensions, clangd
 sudo apt update
 sudo apt install clangd
-sudo apt install nvidia-nsight-systems
+sudo apt install cuda-nsight-systems-12-4
 ```
