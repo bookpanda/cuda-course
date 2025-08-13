@@ -17,7 +17,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/github
 ssh -T git@github.com
 
-# download extensions, clangd
+# download c++, clang extensions, clangd, nsys
 sudo apt update
 sudo apt install clangd
 sudo apt install cuda-nsight-systems-12-4
