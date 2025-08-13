@@ -42,8 +42,8 @@ int main(void) {
     CHECK_CUDA_ERROR(cudaMalloc((void **)&d_C, size));
 
     // Create streams
-    CHECK_CUDA_ERROR(cudaStreamCreate(&stream1));
-    CHECK_CUDA_ERROR(cudaStreamCreate(&stream2));
+    CHECK_CUDA_ERROR(cudaStreamCreate(&stream1)); // copy h_A, launch kernel, copy d_C
+    CHECK_CUDA_ERROR(cudaStreamCreate(&stream2)); // copy h_B
 
     // Copy inputs to device asynchronously
     CHECK_CUDA_ERROR(cudaMemcpyAsync(d_A, h_A, size, cudaMemcpyHostToDevice, stream1));
@@ -52,12 +52,15 @@ int main(void) {
     // Launch kernels
     int threadsPerBlock = 256;
     int blocksPerGrid = (numElements + threadsPerBlock - 1) / threadsPerBlock;
+    // problem: GPU may start the kernel in stream1 before d_B copy in stream2 is finished
     vectorAdd<<<blocksPerGrid, threadsPerBlock, 0, stream1>>>(d_A, d_B, d_C, numElements);
 
     // Copy result back to host asynchronously
     CHECK_CUDA_ERROR(cudaMemcpyAsync(h_C, d_C, size, cudaMemcpyDeviceToHost, stream1));
 
     // Synchronize streams
+    // Blocks the host thread until all previous work submitted to that stream has completed on the GPU
+    // If you try to use h_C before the GPU work is finished, you’ll read incomplete or garbage results
     CHECK_CUDA_ERROR(cudaStreamSynchronize(stream1));
     CHECK_CUDA_ERROR(cudaStreamSynchronize(stream2));
 
