@@ -40,4 +40,6 @@ nvcc 01_LtMatmul.cu -o 01 -lcublasLt
 nvcc 02_compare.cu -o 02 -lcublasLt -lcublas
 # cublasXt
 nvcc 01_demo.cu -o 01 -lcublas
+# cuDNN
+nvcc 01\ Conv2d_NCHW.cu -lcudnn
 ```
