@@ -21,4 +21,7 @@ ssh -T git@github.com
 sudo apt update
 sudo apt install clangd
 sudo apt install cuda-nsight-systems-12-4
+
+# allow tmux scrolling
+tmux set -g mouse on
 ```
