@@ -24,4 +24,7 @@ sudo apt install cuda-nsight-systems-12-4
 
 # allow tmux scrolling
 tmux set -g mouse on
+
+# compiling with cuBLAS
+nvcc 01_Hgemm_Sgemm.cu -o 01 -lcublas
 ```

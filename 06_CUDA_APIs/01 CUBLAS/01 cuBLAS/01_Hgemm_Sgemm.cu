@@ -81,6 +81,8 @@ int main() {
     
     // cuBLAS SGEMM
     float alpha = 1.0f, beta = 0.0f;
+    // gemm = general matrix multiplication
+    // SGEMM = single precision gemm
     CHECK_CUBLAS(cublasSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, N, M, K, &alpha, d_B, N, d_A, K, &beta, d_C, N));
     CHECK_CUDA(cudaMemcpy(C_cublas_s, d_C, M * N * sizeof(float), cudaMemcpyDeviceToHost));
 
@@ -90,7 +92,7 @@ int main() {
     CHECK_CUDA(cudaMalloc(&d_B_h, K * N * sizeof(half)));
     CHECK_CUDA(cudaMalloc(&d_C_h, M * N * sizeof(half)));
 
-    // Convert to half precision on CPU
+    // Convert to half precision on CPU (half = 2 bytes, normal float = 4 bytes)
     half A_h[M * K], B_h[K * N];
     for (int i = 0; i < M * K; i++) {
         A_h[i] = __float2half(A[i]);
