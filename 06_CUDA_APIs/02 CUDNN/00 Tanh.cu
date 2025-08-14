@@ -54,7 +54,7 @@ bool verifyResults(float* cpu_output, float* gpu_output, int size, float toleran
 int main() {
     // Set up tensor dimensions for a scenario where cuDNN is likely to outperform
     const int batch_size = 256; // NCHW format
-    const int channels = 32;
+    const int channels = 32; // e.g. RGB
     const int height = 224;
     const int width = 224;
     const int tensor_size = batch_size * channels * height * width;
