@@ -12,6 +12,7 @@
 - In cases where a problem cannot be run by a single kernel, cuBLASLt will attempt to decompose the problem into multiple sub-problems and solve it by running the kernel on each sub-problem.
 
 - this is where fp16/fp8/int8 kicks in
+- lightweight = faster but lower precision
 
 ## cuBLAS-Xt
 - cublas-xt for host + gpu solving (way slower)
