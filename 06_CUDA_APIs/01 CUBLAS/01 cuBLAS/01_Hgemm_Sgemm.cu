@@ -81,7 +81,7 @@ int main() {
     
     // cuBLAS SGEMM
     float alpha = 1.0f, beta = 0.0f;
-    // gemm = general matrix multiplication
+    // gemm = general matrix multiplication = alpha * A * B + beta * C
     // SGEMM = single precision gemm
     // A,B,C = row order, At, Bt, Ct = col order, A^T = At
     // cublasSgemm expects col major, we can transpose it before gemm,
