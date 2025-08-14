@@ -136,6 +136,7 @@ int main() {
     const float beta = 0.0f;
 
     // Perform matrix multiplication using cublasLtMatmul (FP32)
+    // also col major order
     CHECK_CUBLAS(cublasLtMatmul(handle, matmulDesc_fp32, &alpha, d_B_fp32, matB_fp32, d_A_fp32, matA_fp32, &beta, d_C_fp32, matC_fp32, d_C_fp32, matC_fp32, nullptr, nullptr, 0, 0));
 
     // half alpha and beta
