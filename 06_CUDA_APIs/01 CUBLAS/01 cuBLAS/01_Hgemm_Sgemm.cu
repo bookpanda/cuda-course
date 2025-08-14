@@ -83,6 +83,12 @@ int main() {
     float alpha = 1.0f, beta = 0.0f;
     // gemm = general matrix multiplication
     // SGEMM = single precision gemm
+    // A,B,C = row order, At, Bt, Ct = col order, A^T = At
+    // cublasSgemm expects col major, we can transpose it before gemm,
+    // cublasSgemm(handle,CUBLAS_OP_T,CUBLAS_OP_T,m,n,k,&alpha,d_a,m,d_b,k,&beta,d_c,m)
+    // will compute At Bt = Ct
+    // but it will also return in col major order, which is not what we want
+    // so, instead of computing At Bt, we compute B A = (At Bt)^T = (Ct)^T = C
     CHECK_CUBLAS(cublasSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, N, M, K, &alpha, d_B, N, d_A, K, &beta, d_C, N));
     CHECK_CUDA(cudaMemcpy(C_cublas_s, d_C, M * N * sizeof(float), cudaMemcpyDeviceToHost));
 
