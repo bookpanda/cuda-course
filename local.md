@@ -17,10 +17,19 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/github
 ssh -T git@github.com
 
-# download c++, clang extensions, clangd, nsys
+# download c++, clangd extensions, clangd, nsys
 sudo apt update
 sudo apt install clangd
 sudo apt install cuda-nsight-systems-12-4
+
+# python setup
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+conda create -n cuda python=3.12
+conda activate cuda
+conda info --envs # Python select interpreter path: /venv/cuda/bin/python
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+
 
 # allow tmux scrolling
 tmux set -g mouse on
