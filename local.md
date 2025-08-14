@@ -27,4 +27,5 @@ tmux set -g mouse on
 
 # compiling with cuBLAS
 nvcc 01_Hgemm_Sgemm.cu -o 01 -lcublas
+nvcc 01_LtMatmul.cu -o 01 -lcublasLt
 ```
