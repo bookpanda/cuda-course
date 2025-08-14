@@ -45,6 +45,7 @@ int main() {
     cublasXtHandle_t handle;
     CHECK_CUBLAS(cublasXtCreate(&handle));
 
+    // have only 1 GPU
     int devices[1] = {0};
     CHECK_CUBLAS(cublasXtDeviceSelect(handle, 1, devices));
 

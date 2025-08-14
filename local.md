@@ -29,4 +29,6 @@ tmux set -g mouse on
 nvcc 01_Hgemm_Sgemm.cu -o 01 -lcublas
 nvcc 01_LtMatmul.cu -o 01 -lcublasLt
 nvcc 02_compare.cu -o 02 -lcublasLt -lcublas
+# cublasXt
+nvcc 01_demo.cu -o 01 -lcublas
 ```
