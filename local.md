@@ -29,6 +29,7 @@ conda create -n cuda python=3.12
 conda activate cuda
 conda info --envs # Python select interpreter path: /venv/cuda/bin/python
 conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+conda install triton
 
 
 # allow tmux scrolling
